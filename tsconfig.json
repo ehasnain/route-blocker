@@ -16,11 +16,5 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
-  },
-  "sourceRoot": "src",
-  "baseUrl": ".",
-  "exclude": [
-    "node_modules",
-    "dist"
-  ]
+  }
 }
