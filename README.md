@@ -4,7 +4,6 @@ A middleware for expressjs to block or unblock a route
 
 ## Install
 
-
 Using npm
 
 ```sh
