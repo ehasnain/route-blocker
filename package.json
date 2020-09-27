@@ -4,6 +4,9 @@
   "description": "A middleware for expressjs to block or unblock a route",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "./scripts/build.sh",
     "lint": "./scripts/lint.sh",
