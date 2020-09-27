@@ -16,6 +16,10 @@ class RouteBlocker {
         RouteBlocker.instance = this;
     }
 
+    public get routeBlocks(): RoutesBlockingMap {
+        return this.routesBlockingMap;
+    }
+
     public middleware(route: string) {
         return (req: Request, res: Response, next: NextFunction) => {
             if (this.isRouteBlocked(route)) {
@@ -35,6 +39,10 @@ class RouteBlocker {
         this.routesBlockingMap[route] = false;
     }
 
+    public clearBlockings(): void {
+        this.routesBlockingMap = {};
+    }
+
     private isRouteBlocked(route: string) {
         if (!this.routeBlockingExists(route)) {
             return false;
@@ -43,7 +51,7 @@ class RouteBlocker {
     }
 
     private routeBlockingExists(route: string) {
-        if (this.routesBlockingMap.hasOwnProperty(route)) {
+        if (route in this.routesBlockingMap) {
             return true;
         }
         return false;
