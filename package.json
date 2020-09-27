@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/ehasnain/route-blocker#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "typescript": "^4.0.3"
   }
 }
