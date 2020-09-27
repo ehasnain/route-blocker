@@ -5,9 +5,8 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc"
   },
-  "prepublish": "tsc",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/ehasnain/route-blocker.git"
