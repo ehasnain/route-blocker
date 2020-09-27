@@ -5,7 +5,7 @@ import {
 } from "express";
 import { RoutesBlockingMap } from ".";
 
-export class RouteBlocker {
+class RouteBlocker {
     private static instance: RouteBlocker;
     private routesBlockingMap: RoutesBlockingMap = {};
 
@@ -49,3 +49,7 @@ export class RouteBlocker {
         return false;
     }
 }
+
+const routeBlocker = new RouteBlocker();
+
+export default routeBlocker;
