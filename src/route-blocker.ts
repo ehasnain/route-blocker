@@ -50,6 +50,4 @@ class RouteBlocker {
     }
 }
 
-const routeBlocker = new RouteBlocker();
-
-export default routeBlocker;
+export const routeBlocker = new RouteBlocker();
