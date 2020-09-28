@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { routeBlocker, RoutesBlockingMap } from "../src"
+import { routeBlocker, RoutesBlockingMap } from ".."
 
 describe("Feature: Route Blocker", () => {
 
