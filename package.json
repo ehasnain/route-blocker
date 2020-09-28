@@ -1,6 +1,6 @@
 {
   "name": "route-blocker",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "A middleware for expressjs to block or unblock a route",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
