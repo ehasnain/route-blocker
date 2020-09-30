@@ -1,3 +1,3 @@
 #!/bin/sh
 
-tsc
+yarn test && tsc
