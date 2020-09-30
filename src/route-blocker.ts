@@ -4,6 +4,7 @@ import {
     Response,
 } from "express";
 import { RoutesBlockingMap } from ".";
+import { isValidString } from "./utils";
 
 class RouteBlocker {
     private static instance: RouteBlocker;
@@ -30,13 +31,21 @@ class RouteBlocker {
     }
 
     public disableRoute(route: string) {
-        console.warn(`Route "${route}": disabled ⛔️`);
-        this.routesBlockingMap[route] = true;
+        if (isValidString(route)) {
+            this.routesBlockingMap[route] = true;
+            console.warn(`Route "${route}": disabled ⛔️`);
+        } else {
+            console.error("Invalid route key 🤡!");
+        }
     }
-
+    
     public enableRoute(route: string) {
-        console.info(`Route "${route}": enabled ✅`);
-        this.routesBlockingMap[route] = false;
+        if (isValidString(route)) {
+            console.info(`Route "${route}": enabled ✅`);
+            this.routesBlockingMap[route] = false;
+        } else {
+            console.error("Invalid route key 🤡!");
+        }
     }
 
     public clearBlockings(): void {
