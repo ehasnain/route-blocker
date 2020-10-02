@@ -12,6 +12,7 @@
     "clean": "./scripts/clean.sh lib",
     "lint": "./scripts/lint.sh",
     "prepublishOnly": "yarn clean && yarn build",
+    "prepack": "yarn prepublishOnly",
     "pretest": "yarn && yarn lint ",
     "test": "./scripts/test.sh",
     "test-watch": "yarn pretest && ./scripts/test-watch.sh"
