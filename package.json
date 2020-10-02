@@ -9,7 +9,9 @@
   ],
   "scripts": {
     "build": "./scripts/build.sh",
+    "clean": "./scripts/clean.sh lib",
     "lint": "./scripts/lint.sh",
+    "prepublishOnly": "yarn clean && yarn && yarn run build",
     "test": "./scripts/test.sh",
     "test-watch": "./scripts/test-watch.sh"
   },
