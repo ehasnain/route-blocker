@@ -1,3 +1,4 @@
 #!/bin/sh
 
-yarn test && tsc
+tsc -p . &&
+    echo "Package successfully built 💚"

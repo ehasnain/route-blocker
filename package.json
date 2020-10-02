@@ -8,12 +8,13 @@
     "lib/**/*"
   ],
   "scripts": {
-    "build": "./scripts/build.sh",
+    "build": "yarn test && ./scripts/build.sh",
     "clean": "./scripts/clean.sh lib",
     "lint": "./scripts/lint.sh",
-    "prepublishOnly": "yarn clean && yarn && yarn run build",
+    "prepublishOnly": "yarn clean && yarn build",
+    "pretest": "yarn && yarn lint ",
     "test": "./scripts/test.sh",
-    "test-watch": "./scripts/test-watch.sh"
+    "test-watch": "yarn pretest && ./scripts/test-watch.sh"
   },
   "repository": {
     "type": "git",

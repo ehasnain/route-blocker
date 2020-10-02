@@ -1,5 +1,4 @@
 #!/bin/sh
 
-yarn &&
-yarn lint &&
-mocha -r ts-node/register "./src/**/*test**.ts" $@
+mocha -r ts-node/register "./src/**/*test**.ts" $@ &&
+    echo "All tests passed 💚"
