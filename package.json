@@ -30,9 +30,6 @@
     "url": "https://github.com/ehasnain/route-blocker/issues"
   },
   "homepage": "https://github.com/ehasnain/route-blocker#readme",
-  "dependencies": {
-    "@types/express": "^4.17.1"
-  },
   "peerDependencies": {
     "express": "^4.17.1"
   },
