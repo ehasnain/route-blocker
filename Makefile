@@ -1,8 +1,8 @@
 del-nm:
-	rm -rf node_modules
+	./scripts/clean.sh node_modules
 
 del-lib:
-	rm -rf lib
+	./scripts/clean.sh lib
 
 clean:
 	make del-nm && make del-lib
