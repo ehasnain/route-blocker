@@ -5,18 +5,21 @@
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "files": [
-    "lib/**/*"
+    "lib/**"
   ],
   "scripts": {
     "build": "yarn test && ./scripts/build.sh",
     "clean": "./scripts/clean.sh lib",
     "lint": "./scripts/lint.sh",
     "prepublishOnly": "yarn clean && yarn build",
-    "pretest": "yarn && yarn lint ",
+    "pretest": "yarn && yarn lint",
     "start": "./scripts/start-example.sh",
     "start-watch": "./scripts/start-example-watch.sh",
-    "test": "./scripts/test.sh",
-    "test-watch": "yarn pretest && ./scripts/test-watch.sh"
+    "test": "yarn test-unit && yarn test-int",
+    "test-int": "./scripts/test.sh",
+    "test-int-watch": "./scripts/test-watch.sh",
+    "test-unit": "./scripts/test-unit.sh",
+    "test-unit-watch": "./scripts/test-unit-watch.sh"
   },
   "repository": {
     "type": "git",

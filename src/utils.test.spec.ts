@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { isValidString } from "../utils";
+import { isValidString } from "./utils";
 
 describe("Function: isValidString", () => {
     it("Returns true if a valid string", () => {
