@@ -13,6 +13,8 @@
     "lint": "./scripts/lint.sh",
     "prepublishOnly": "yarn clean && yarn build",
     "pretest": "yarn && yarn lint ",
+    "start": "./scripts/start-example.sh",
+    "start-watch": "./scripts/start-example-watch.sh",
     "test": "./scripts/test.sh",
     "test-watch": "yarn pretest && ./scripts/test-watch.sh"
   },
