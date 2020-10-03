@@ -1,74 +1,86 @@
+import { clearRouteBlocks, disableRoute, enableRoute, getRoute } from "./helpers/api";
+import { Server } from "http";
 import { expect } from "chai";
-import { routeBlocker, RoutesBlockingMap } from ".."
+import { testServer } from "./helpers/test-server";
 
 describe("Feature: Route Blocker", () => {
 
-    const route1 = "route-1";
-    const route2 = "route-2";
-    const route3 = "route-3";
+    const route1 = "my-route-1";
+    const route2 = "my-route-2";
+    const route3 = "my-route-3";
 
-    after("Clean all routes", () => {
-        routeBlocker.clearBlockings();
+    let response: ChaiHttp.Response;
+    let server: Server;
+
+    before("Start server", async () => {
+        server = testServer();
+    });
+
+    after("Stop server", async () => {
+        await clearRouteBlocks();
+        server.close();
     });
 
     describe("Scenario: Happy Path", () => {
 
-        before("When: One route is blocked", () => {
-            routeBlocker.disableRoute(route1);
+        before("When: One route is blocked", async () => {
+            await disableRoute(route1);
         });
 
-        const blockedRoutes = routeBlocker.routeBlocks;
-
-        it(`Then: Only one route is blocked`, () => {
-            expect(blockedRoutes[route1]).to.be.true;
+        it(`Then: One route is blocked`, async () => {
+            response = await getRoute(route1);
+            expect(response.status).to.be.equal(503);
         });
 
-        it(`Then: No blocking exist for other routes`, () => {
-            expect(blockedRoutes[route2]).to.be.undefined;
-            expect(blockedRoutes[route3]).to.be.undefined;
+        it(`Then: No blocking exist for other routes`, async () => {
+            response = await getRoute(route2);
+            expect(response.status).to.be.equal(200);
+            response = await getRoute(route3);
+            expect(response.status).to.be.equal(200);
         });
 
     });
 
     describe("Scenario: More than one route blocking", () => {
 
-        before("When: More than one routes are blocked", () => {
-            routeBlocker.disableRoute(route1);
-            routeBlocker.disableRoute(route2);
+        before("When: Two routes are blocked", async () => {
+            await disableRoute(route1);
+            await disableRoute(route2);
         });
 
-        const blockedRoutes = routeBlocker.routeBlocks;
-
-        it(`Then: Only two routes are blocked`, () => {
-            expect(blockedRoutes[route1]).to.be.true;
-            expect(blockedRoutes[route2]).to.be.true;
+        it(`Then: Only two routes are blocked`, async () => {
+            response = await getRoute(route1);
+            expect(response.status).to.be.equal(503);
+            response = await getRoute(route2);
+            expect(response.status).to.be.equal(503);
         });
 
-        it(`Then: No blocking exist for non-blocked route`, () => {
-            expect(blockedRoutes[route3]).to.be.undefined;
+        it(`Then: No blocking exist for non-blocked route`, async () => {
+            response = await getRoute(route3);
+            expect(response.status).to.be.equal(200);
         });
 
     });
 
     describe("Scenario: When one blocked route is unblocked", () => {
 
-        before("When: More than one routes are blocked", () => {
-            routeBlocker.disableRoute(route1);
-            routeBlocker.disableRoute(route2);
+        before("When: More than one routes are blocked", async () => {
+            await disableRoute(route1);
+            await disableRoute(route2);
         });
-
-        let blockedRoutes: RoutesBlockingMap;
 
         it(`When: One route is unblocked
-        Then: Then the route is unblocked`, () => {
-            routeBlocker.enableRoute(route1);
-            blockedRoutes = routeBlocker.routeBlocks;
-            expect(blockedRoutes[route1]).to.be.false;
+        Then: The route is unblocked`, async () => {
+            await enableRoute(route1);
+            response = await getRoute(route1);
+            expect(response.status).to.be.equal(200);
         });
 
-        it(`Then: Other routes are still blocked`, () => {
-            expect(blockedRoutes[route2]).to.be.true;
-            expect(blockedRoutes[route3]).to.be.undefined;
+        it(`Then: Other routes stay as they are`, async () => {
+            response = await getRoute(route2);
+            expect(response.status).to.be.equal(503);
+            response = await getRoute(route3);
+            expect(response.status).to.be.equal(200);
         });
 
     });
