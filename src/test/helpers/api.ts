@@ -13,17 +13,17 @@ export async function getRoute(subRoute: string): Promise<ChaiHttp.Response> {
 }
 
 export async function enableRoute(subRoute: string): Promise<ChaiHttp.Response> {
-    const api = `${subRoute}/enable`;
-    return getRoute(api);
+    const apiEnable = `${subRoute}/enable`;
+    return getRoute(apiEnable);
 }
 
 export async function disableRoute(subRoute: string): Promise<ChaiHttp.Response> {
-    const api = `${subRoute}/disable`;
-    return getRoute(api);
+    const apiDisable = `${subRoute}/disable`;
+    return getRoute(apiDisable);
 }
 
 export async function clearRouteBlocks(): Promise<ChaiHttp.Response> {
-    const api = "clear-route-blocks";
-    return getRoute(api);
+    const apiClearAll = "clear-route-blocks";
+    return getRoute(apiClearAll);
 }
 
