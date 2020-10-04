@@ -4,8 +4,8 @@ import {
     Response,
 } from "express";
 import { RoutesBlockingMap } from ".";
-import { isValidString } from "./utils";
-import log from "./logger";
+import { isValidString } from "./utils/validator";
+import log from "./utils/logger";
 
 class RouteBlocker {
     private static instance: RouteBlocker;
