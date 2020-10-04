@@ -16,8 +16,9 @@
     "start": "./scripts/start-example.sh",
     "start-watch": "./scripts/start-example-watch.sh",
     "test": "yarn test-unit && yarn test-int",
-    "test-int": "./scripts/test.sh",
-    "test-int-watch": "./scripts/test-watch.sh",
+    "test-watch": "./scripts/test-watch.sh",
+    "test-int": "./scripts/test-int.sh",
+    "test-int-watch": "./scripts/test-int-watch.sh",
     "test-unit": "./scripts/test-unit.sh",
     "test-unit-watch": "./scripts/test-unit-watch.sh"
   },

@@ -1,4 +1,5 @@
 #!/bin/sh
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
-$DIR/test.sh --watch --watch-files src
+DIR="$( cd "$( dirname $0 )" >/dev/null && pwd )"
+
+nodemon --watch "." --ext "ts,json" --exec "clear && yarn test"
