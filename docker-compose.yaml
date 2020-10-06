@@ -1,0 +1,41 @@
+version: "3"
+
+services:
+    dev:
+        container_name: route_blocker_dev
+        image: node:lts-alpine3.12               
+        restart: always
+        stdin_open: true
+        tty: true
+        volumes:
+            - .:/app
+        command:
+            - sh
+            - -c
+            - cd /app && yarn && yarn test-unit-watch
+    dev_all:
+        container_name: route_blocker_dev_all
+        image: node:lts-alpine3.12               
+        restart: always
+        stdin_open: true
+        tty: true
+        volumes:
+            - .:/app
+        command:
+            - sh
+            - -c
+            - cd /app && yarn && yarn test-watch
+    example_run:
+        container_name: route_blocker_example
+        image: node:lts-alpine3.12               
+        restart: always
+        stdin_open: true
+        tty: true
+        volumes:
+            - .:/app
+        ports:
+            - 4000:4000
+        command:
+            - sh
+            - -c
+            - cd /app && yarn && yarn start-watch
