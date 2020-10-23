@@ -34,6 +34,7 @@
     "build": "./scripts/build.sh",
     "clean": "./scripts/clean.sh lib",
     "lint": "./scripts/lint.sh",
+    "prepublishOnly": "yarn && yarn build",
     "start": "./scripts/start-example.sh",
     "start-watch": "./scripts/start-example-watch.sh",
     "test": "yarn test-unit && yarn test-int",

@@ -9,7 +9,7 @@ on:
             - master
 
 jobs:
-    test:
+    test-and-build:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
@@ -22,26 +22,21 @@ jobs:
               run: yarn test-unit
             - name: Run Integrations Tests
               run: yarn test-int
-
-    build:
-        needs: test
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v2
             - name: Build package
               run: yarn build
 
     publish-npm:
-        needs: build
+        needs: test-and-build
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
-            - run: yarn publish
+            - name: Publish package
+              run: yarn publish
               env:
                 NODE_AUTH_TOKEN: ${{secrets.npm_token}}
 
 #   publish-gpr:
-#     needs: build
+#     needs: test-and-build
 #     runs-on: ubuntu-latest
 #     steps:
 #       - uses: actions/checkout@v2
