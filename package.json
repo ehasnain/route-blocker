@@ -31,11 +31,9 @@
     "unblock"
   ],
   "scripts": {
-    "build": "yarn test && ./scripts/build.sh",
+    "build": "./scripts/build.sh",
     "clean": "./scripts/clean.sh lib",
     "lint": "./scripts/lint.sh",
-    "prepublishOnly": "yarn clean && yarn build",
-    "pretest": "yarn && yarn lint",
     "start": "./scripts/start-example.sh",
     "start-watch": "./scripts/start-example-watch.sh",
     "test": "yarn test-unit && yarn test-int",
