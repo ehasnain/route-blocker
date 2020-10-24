@@ -2,25 +2,22 @@
   "name": "route-blocker",
   "version": "1.2.0",
   "description": "A middleware for expressjs to block or unblock a route",
+  "author": "Ehtesham Hasnain",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ehasnain/route-blocker/issues"
+  },
+  "homepage": "https://github.com/ehasnain/route-blocker#readme",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "files": [
     "lib/**"
   ],
-  "scripts": {
-    "build": "yarn test && ./scripts/build.sh",
-    "clean": "./scripts/clean.sh lib",
-    "lint": "./scripts/lint.sh",
-    "prepublishOnly": "yarn clean && yarn build",
-    "pretest": "yarn && yarn lint",
-    "start": "./scripts/start-example.sh",
-    "start-watch": "./scripts/start-example-watch.sh",
-    "test": "yarn test-unit && yarn test-int",
-    "test-watch": "./scripts/test-watch.sh",
-    "test-int": "./scripts/test-int.sh",
-    "test-int-watch": "./scripts/test-int-watch.sh",
-    "test-unit": "./scripts/test-unit.sh",
-    "test-unit-watch": "./scripts/test-unit-watch.sh"
+  "publishConfig": {
+    "access": "public",
+    "branches": [
+      "master"
+    ]
   },
   "repository": {
     "type": "git",
@@ -33,12 +30,20 @@
     "block",
     "unblock"
   ],
-  "author": "Ehtesham Hasnain",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ehasnain/route-blocker/issues"
+  "scripts": {
+    "build": "./scripts/build.sh",
+    "clean": "./scripts/clean.sh lib",
+    "lint": "./scripts/lint.sh",
+    "prepublishOnly": "yarn && yarn build",
+    "start": "./scripts/start-example.sh",
+    "start-watch": "./scripts/start-example-watch.sh",
+    "test": "yarn test-unit && yarn test-int",
+    "test-watch": "./scripts/test-watch.sh",
+    "test-int": "./scripts/test-int.sh",
+    "test-int-watch": "./scripts/test-int-watch.sh",
+    "test-unit": "./scripts/test-unit.sh",
+    "test-unit-watch": "./scripts/test-unit-watch.sh"
   },
-  "homepage": "https://github.com/ehasnain/route-blocker#readme",
   "peerDependencies": {
     "express": "^4.17.1"
   },
