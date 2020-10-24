@@ -1,6 +1,6 @@
 {
   "name": "route-blocker",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A middleware for expressjs to block or unblock a route",
   "author": "Ehtesham Hasnain",
   "license": "MIT",
